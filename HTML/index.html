@@ -11,10 +11,10 @@
     <div id="game-container">
       <div id="pieces-container">
         <div id="pieces-highLight">
-          <div id="piece1" class="piece">💀</div>
-          <div id="piece2" class="piece">👽</div>
-          <div id="piece3" class="piece">🚀</div>
-          <div id="piece4" class="piece">👻</div>
+          <div id="piece1" class="piece">🔴</div>
+          <div id="piece2" class="piece">🔵</div>
+          <div id="piece3" class="piece">🟢</div>
+          <div id="piece4" class="piece">🟡</div>
         </div>
       </div>
       <div id="board-side">
@@ -132,7 +132,21 @@
       </div>
       <div id="menu-container">
         <h1 id="game-title">Black Holes & Golden Gates</h1>
-        <div class="diceDisplay"></div>
+        <div id="msg-container">
+          <h1>Game State</h1>
+          <div id="current-positions">
+            <h2>💀 Current Position: </h2>
+            <h2>👽 Current Position: </h2>
+            <h2>🚀 Current Position: </h2>
+            <h2>🔥 Current Position: </h2>
+          </div>
+          <h2 id="msg">It's Player '👽' turn</h2>
+        </div>
+        <div id="diceScreen"></div>
+        <div id="btns-container">
+          <div class="btn-div"><button class="btn-style" id="diceBtn">Roll The Dice</button></div>
+          <div class="btn-div"><button class="btn-style" id="rstButton">Play Again</button></div>
+        </div>
       </div>
     </div>
   </body>

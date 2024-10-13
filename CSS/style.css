@@ -25,19 +25,27 @@ body {
   height: 40%;
   width: 60%;
   background-color: brown;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: repeat(4, 25%);
-  justify-content: center;
+  display: flex;
+  /* grid-template-columns: auto;
+  grid-template-rows: repeat(4, 25%); */
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
+  border-radius: 1.5vw;
 }
 
 .piece {
+  height: 3.5vw;
+  width: 3.5vw;
   box-sizing: border-box;
-  font-size: 2rem;
-  border: 2px solid black;
+  font-size: 2vw;
+  /* border: 2px solid black; */
   background-color: turquoise;
-  border-radius: 100%;
+  border-radius: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #board-side {
@@ -53,6 +61,10 @@ body {
   width: 40vw;
   height: 100vh;
   background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1vw;
 }
 
 #game-title {
@@ -61,18 +73,23 @@ body {
   justify-content: center;
   align-items: center;
   background-color: blueviolet;
+  /* font-size: 2vw; */
 }
 
 #board {
-  height: 680px;
-  width: 680px;
-  border: 1px solid black;
+  height: 90%;
+  width: 100%;
+  border: 0.2vw solid black;
   display: grid;
-  grid-template-columns: repeat(10, 68px);
-  grid-template-rows: repeat(10, 68px);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   box-sizing: border-box;
   margin: 0;
   padding: 0px;
+  background: url(/IMGs/GameBaord-Background.jpg);
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .cell {
@@ -81,4 +98,81 @@ body {
   align-items: center;
   border: 1px solid brown;
   box-sizing: border-box;
+  font-size: 2vw;
+  aspect-ratio: 1;
+}
+
+#diceScreen{
+  height: 15vw;
+  width: 15vw;
+  border: 0.4vw solid black;
+  border-radius: 3vw;
+  aspect-ratio: 1;
+  margin-top: 2vw;
+}
+
+#msg-container{
+  height: 30vh;
+  width: 90%;
+  border: 0.2vw solid purple;
+  background-color: wheat;
+  
+}
+
+#msg-container h1 {
+  text-align: center;
+  background-color: aqua;
+  margin:0;
+}
+
+#current-positions{
+  /* background-color: antiquewhite; */
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(2,1fr);
+  margin-left: 01vw;
+}
+
+#msg{
+text-align: center;
+margin: 0.5vw;
+}
+
+#btns-container{
+  margin-top: 3vw;
+  /* background-color: cadetblue; */
+  width: 100%;
+  height: 10vh;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-div{
+  height: 10vh;
+  width: 12vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-style{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5vw;
+  border: none;
+  border-radius: 2vw;
+  transition: 0.4s;
+}
+
+.btn-style:hover{
+  background-color: #434343;
+  color: white;
+  border-radius: 1.5vw;
+}
+
+.btn-style:active{
+  background-color: black;
 }
