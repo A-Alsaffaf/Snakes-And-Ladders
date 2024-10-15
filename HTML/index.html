@@ -7,14 +7,14 @@
     <script defer src="/JS/script.js"></script>
     <title>Black Holes & Golden Gates</title>
   </head>
-  <body>
+  <body onload="initializeGame()">
     <div id="game-container">
       <div id="pieces-container">
         <div id="pieces-highLight">
-          <div id="piece1" class="piece">🔴</div>
-          <div id="piece2" class="piece">🔵</div>
-          <div id="piece3" class="piece">🟢</div>
-          <div id="piece4" class="piece">🟡</div>
+          <div id="piece1" class="piece">💀</div>
+          <div id="piece2" class="piece">👽</div>
+          <div id="piece3" class="piece">🚀</div>
+          <div id="piece4" class="piece">🔥</div>
         </div>
       </div>
       <div id="board-side">
@@ -135,17 +135,30 @@
         <div id="msg-container">
           <h1>Game State</h1>
           <div id="current-positions">
-            <h2>💀 Current Position: </h2>
-            <h2>👽 Current Position: </h2>
-            <h2>🚀 Current Position: </h2>
-            <h2>🔥 Current Position: </h2>
+            <h2>💀 Current Position:</h2>
+            <h2>👽 Current Position:</h2>
+            <h2>🚀 Current Position:</h2>
+            <h2>🔥 Current Position:</h2>
           </div>
-          <h2 id="msg">It's Player '👽' turn</h2>
+          <h2 id="msg"></h2>
         </div>
-        <div id="diceScreen"></div>
+        <div id="diceContainer">
+          <div id="diceScreen">
+            <img id="diceImg" src="/IMGs/BlackBackground.png" alt="Dice" />
+            <!-- <img src="/IMGs/Dice Images/Face2.png" alt="Dice" />
+            <img src="/IMGs/Dice Images/Face3.png" alt="Dice" />
+            <img src="/IMGs/Dice Images/Face4.png" alt="Dice" />
+            <img src="/IMGs/Dice Images/Face5.png" alt="Dice" />
+            <img src="/IMGs/Dice Images/Face6.png" alt="Dice" /> -->
+          </div>
+        </div>
         <div id="btns-container">
-          <div class="btn-div"><button class="btn-style" id="diceBtn">Roll The Dice</button></div>
-          <div class="btn-div"><button class="btn-style" id="rstButton">Play Again</button></div>
+          <div class="btn-div">
+            <button class="btn-style" id="diceBtn">Roll The Dice</button>
+          </div>
+          <div class="btn-div">
+            <button class="btn-style" id="rstButton">Play Again</button>
+          </div>
         </div>
       </div>
     </div>

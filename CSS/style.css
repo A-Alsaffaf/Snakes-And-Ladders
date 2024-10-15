@@ -77,8 +77,8 @@ body {
 }
 
 #board {
-  height: 90%;
-  width: 100%;
+  height: 700px;
+  width: 700px;
   border: 0.2vw solid black;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -94,51 +94,75 @@ body {
 
 .cell {
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   border: 1px solid brown;
   box-sizing: border-box;
-  font-size: 2vw;
+  font-size: 22px;
   aspect-ratio: 1;
 }
 
-#diceScreen{
-  height: 15vw;
-  width: 15vw;
-  border: 0.4vw solid black;
-  border-radius: 3vw;
-  aspect-ratio: 1;
+#diceContainer {
+  /* background-color: aqua; */
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 2vw;
 }
 
-#msg-container{
+#diceScreen {
+  height: 20%;
+  width: auto;
+  border: 0.4vw solid black;
+  border-radius: 3vw;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5vw;
+  background-color: black;
+  position: absolute;
+}
+
+#diceScreen img {
+  height: 99%;
+  width: 99%;
+  border-radius: 3vw;
+  margin: auto;
+  position: absolute;
+  /* display: none; */
+}
+
+#msg-container {
   height: 30vh;
   width: 90%;
   border: 0.2vw solid purple;
   background-color: wheat;
-  
 }
 
 #msg-container h1 {
   text-align: center;
   background-color: aqua;
-  margin:0;
+  margin: 0;
 }
 
-#current-positions{
+#current-positions {
   /* background-color: antiquewhite; */
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  grid-template-rows: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   margin-left: 01vw;
 }
 
-#msg{
-text-align: center;
-margin: 0.5vw;
+#msg {
+  text-align: center;
+  margin: 0.5vw;
 }
 
-#btns-container{
+#btns-container {
   margin-top: 3vw;
   /* background-color: cadetblue; */
   width: 100%;
@@ -149,7 +173,7 @@ margin: 0.5vw;
   align-items: center;
 }
 
-.btn-div{
+.btn-div {
   height: 10vh;
   width: 12vw;
   display: flex;
@@ -157,7 +181,7 @@ margin: 0.5vw;
   align-items: center;
 }
 
-.btn-style{
+.btn-style {
   background-color: white;
   width: 100%;
   height: 100%;
@@ -167,12 +191,12 @@ margin: 0.5vw;
   transition: 0.4s;
 }
 
-.btn-style:hover{
+.btn-style:hover {
   background-color: #434343;
   color: white;
   border-radius: 1.5vw;
 }
 
-.btn-style:active{
+.btn-style:active {
   background-color: black;
 }
