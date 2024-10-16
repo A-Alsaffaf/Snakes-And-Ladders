@@ -43,9 +43,9 @@ const boardCellEls = document.querySelectorAll('.cell')
 const diceButtonEl = document.querySelector('#diceBtn')
 const msgEl = document.querySelector('#msg')
 const rstBtnEl = document.querySelector('#rstButton')
-const currentPositionsScreenEls = document.querySelectorAll(".current-position")
+const currentPositionsScreenEls = document.querySelectorAll('.current-position')
 const diceImageEl = document.querySelector('#diceImg')
-const piecesSideEls = document.querySelectorAll(".piece")
+const piecesSideEls = document.querySelectorAll('.piece')
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -55,7 +55,7 @@ const renderGame = () => {
   appendBoard()
   updateCurrentPositionsScreen()
   hidePiece()
-  diceImageEl.src = '/IMGs/BlackBackground.png'
+  diceImageEl.src = 'BlackBackground.png'
 }
 
 // initialize the game from starting point
@@ -72,13 +72,13 @@ const initializeGame = () => {
   renderGame()
 }
 
-// update the message if the player wins or pring player turn if there is no winner 
+// update the message if the player wins or pring player turn if there is no winner
 const updateMsg = () => {
   if (isWinner === true) {
     msgEl.textContent = `Congratulation ${winner}, You have reached 100 and Won`
   } else if (diceNum === 6) {
     msgEl.textContent = `It's Player ${turn.piece} turn Again`
-  }else {
+  } else {
     msgEl.textContent = `It's Player ${turn.piece} turn`
   }
 }
@@ -88,7 +88,9 @@ const updateCurrentPositionsScreen = () => {
   currentPositionsScreenEls.forEach((pos, index) => {
     if (index == playerIndex) {
       pos.textContent = `${players[index].piece} Current Position: ${players[index].position}`
-    }else {pos.textContent = `${players[index].piece} Current Position: ${players[index].position}` }
+    } else {
+      pos.textContent = `${players[index].piece} Current Position: ${players[index].position}`
+    }
   })
 }
 
@@ -96,8 +98,10 @@ const updateCurrentPositionsScreen = () => {
 const hidePiece = () => {
   piecesSideEls.forEach((piece, index) => {
     if (players[index].position !== 0) {
-      piece.textContent = ""
-    }else {piece.textContent = players[index].piece}
+      piece.textContent = ''
+    } else {
+      piece.textContent = players[index].piece
+    }
   })
 }
 
@@ -111,7 +115,7 @@ const appendBoard = () => {
 // generating the random number for the dice
 const genRandomNum = () => {
   diceNum = Math.floor(Math.random() * 6) + 1
-  diceImageEl.src = `/IMGs/Dice Images/Face${diceNum}.png`
+  diceImageEl.src = `Face${diceNum}.png`
 }
 
 // update the current and older positions of the piece
@@ -138,9 +142,8 @@ const isPlayerAtSnake = () => {
   })
 }
 
-// moving and updating the piece location on the board depending on the current and older positions 
+// moving and updating the piece location on the board depending on the current and older positions
 const movePiece = () => {
-
   boardCellEls.forEach((cell) => {
     if (cell.id == turn.oldPos) {
       if (cell.textContent.includes(turn.piece)) {
@@ -155,7 +158,6 @@ const movePiece = () => {
       cell.textContent += turn.piece
     }
   })
-
 }
 
 // switches the platyer turn if the dice number was not 6
@@ -177,7 +179,7 @@ const checkWinner = () => {
   return
 }
 
-// a function to call all the required functions if there is no winner and handle user click on the button for rolling the dice and play 
+// a function to call all the required functions if there is no winner and handle user click on the button for rolling the dice and play
 const handlePlayClick = () => {
   if (isWinner === true) {
     return
@@ -191,7 +193,7 @@ const handlePlayClick = () => {
     updateCurrentPositionsScreen()
     hidePiece()
     switchTurn()
-    updateMsg()   
+    updateMsg()
   }
 }
 /*----------------------------- Event Listeners -----------------------------*/

@@ -2,7 +2,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: rgb(183, 183, 183);
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -25,7 +25,7 @@ body {
 #pieces-highLight {
   height: 40%;
   width: 60%;
-  background-color: #2C363F;
+  background-color: #2c363f;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -38,7 +38,7 @@ body {
   width: 3.5vw;
   box-sizing: border-box;
   font-size: 2vw;
-  background-color: #20FC8F;
+  background-color: #20fc8f;
   border-radius: 1.2vw;
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ body {
 }
 
 #board-side {
-  height:100vh;
+  height: 100vh;
   width: 50vw;
   display: grid;
   justify-content: center;
@@ -57,7 +57,7 @@ body {
 #menu-container {
   width: 32vw;
   height: 90vh;
-  background-color: #87A0B2;
+  background-color: #87a0b2;
   margin: auto;
   border-radius: 3.5vw;
   display: flex;
@@ -75,12 +75,12 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#snake{
+#snake {
   color: rgb(27, 251, 27);
 }
 
-#ladder{
-  color: #6A381F;
+#ladder {
+  color: #6a381f;
 }
 
 #board {
@@ -94,7 +94,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: url(/IMGs/GameBaord-Background2.jpg);
+  background: url(GameBaord-Background2.jpg);
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -151,7 +151,7 @@ body {
 
 #msg-container h1 {
   text-align: center;
-  color:#FEB95F;
+  color: #feb95f;
   margin: 1vw 0 0 0;
 }
 
@@ -160,14 +160,14 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin-left: 1vw;
-  color: #20FC8F;
+  color: #20fc8f;
   font-size: 0.85vw;
 }
 
 #msg {
   text-align: center;
   margin: 0.5vw;
-  color: #F21B3F;
+  color: #f21b3f;
 }
 
 #btns-container {
@@ -189,9 +189,9 @@ body {
 }
 
 .btn-style {
-  background-color: #2C363F;
-  color: #20FC8F;
-  font-family: "Spicy Rice", serif;
+  background-color: #2c363f;
+  color: #20fc8f;
+  font-family: 'Spicy Rice', serif;
   font-weight: 400;
   font-style: normal;
   width: 100%;
@@ -203,12 +203,12 @@ body {
 }
 
 .btn-style:hover {
-  background-color: #20FC8F;
-  color: #2C363F;
+  background-color: #20fc8f;
+  color: #2c363f;
   border-radius: 1.5vw;
 }
 
 .btn-style:active {
   background-color: #183059;
-  color: #F21B3F;
+  color: #f21b3f;
 }
