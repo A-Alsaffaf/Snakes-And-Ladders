@@ -1,16 +1,9 @@
-// const cellEls = document.querySelectorAll('.cell')
-// let id
-// cellEls.forEach((cell) => {
-//   id = cell.id
-//   cell.innerHTML = id
-//   console.log(id)
-// })
-
 /*-------------------------------- Constants --------------------------------*/
-const gldGatesEnt = [1, 4, 9, 21, 28, 51, 72, 80]
-const gldGatesExit = [38, 14, 31, 42, 84, 67, 91, 99]
-const blkHolesEnt = [17, 54, 62, 64, 87, 93, 95, 98]
-const blkHolesExit = [7, 34, 19, 60, 36, 73, 75, 79]
+const ladderEnts = [1, 4, 9, 21, 28, 51, 72, 80] // stores ladders entrances positions
+const ladderExits = [38, 14, 31, 42, 84, 67, 91, 99] // stores ladders exits positions
+
+const snakeEnts = [17, 54, 62, 64, 87, 93, 95, 98] // stores snakes entrances positions
+const snakeExits = [7, 34, 19, 60, 36, 73, 75, 79] // stores snakes entrances positions
 
 const players = [
   {
@@ -36,100 +29,118 @@ const players = [
 ]
 
 /*---------------------------- Variables (state) ----------------------------*/
+
 let diceNum
 let turn
 let isWinner
 let winner
 let board
 let playerIndex
-let boardCellEls = []
+
 /*------------------------ Cached Element References ------------------------*/
-boardCellEls = document.querySelectorAll('.cell')
+
+const boardCellEls = document.querySelectorAll('.cell')
 const diceButtonEl = document.querySelector('#diceBtn')
 const msgEl = document.querySelector('#msg')
 const rstBtnEl = document.querySelector('#rstButton')
-const displayDiceEl = document.querySelector('#diceScreen').children
-const currentPositionsScreen =
-  document.querySelector('#current-positions').children
-console.log(currentPositionsScreen)
+const currentPositionsScreenEls = document.querySelectorAll(".current-position")
 const diceImageEl = document.querySelector('#diceImg')
+const piecesSideEls = document.querySelectorAll(".piece")
+
 /*-------------------------------- Functions --------------------------------*/
+
+// render a fresh game after initalizing
 const renderGame = () => {
   updateMsg()
-  syncBoard()
+  appendBoard()
+  updateCurrentPositionsScreen()
+  hidePiece()
   diceImageEl.src = '/IMGs/BlackBackground.png'
 }
 
+// initialize the game from starting point
 const initializeGame = () => {
   board = Array(100).fill('')
   players.forEach((player) => {
     player.oldPos = 0
     player.position = 0
   })
+  diceNum = undefined
   playerIndex = 0
   isWinner = false
   turn = players[0]
   renderGame()
 }
 
+// update the message if the player wins or pring player turn if there is no winner 
 const updateMsg = () => {
   if (isWinner === true) {
     msgEl.textContent = `Congratulation ${winner}, You have reached 100 and Won`
-  } else {
+  } else if (diceNum === 6) {
+    msgEl.textContent = `It's Player ${turn.piece} turn Again`
+  }else {
     msgEl.textContent = `It's Player ${turn.piece} turn`
   }
 }
 
-const syncBoard = () => {
+// displaying and updating current positions of each piece to clarify their location on the game for the user
+const updateCurrentPositionsScreen = () => {
+  currentPositionsScreenEls.forEach((pos, index) => {
+    if (index == playerIndex) {
+      pos.textContent = `${players[index].piece} Current Position: ${players[index].position}`
+    }else {pos.textContent = `${players[index].piece} Current Position: ${players[index].position}` }
+  })
+}
+
+// hide the pieces from the initialized area and move them to the baord
+const hidePiece = () => {
+  piecesSideEls.forEach((piece, index) => {
+    if (players[index].position !== 0) {
+      piece.textContent = ""
+    }else {piece.textContent = players[index].piece}
+  })
+}
+
+// empty the baord after initalizing or resetting the game by syncronizng an empty 100 cell array to the actual baord
+const appendBoard = () => {
   board.forEach((cell, index) => {
     boardCellEls[index].textContent = cell
   })
 }
 
-const displayTheDice = () => {
-  displayDiceEl.forEach((dice, index) => {
-    dice
-  })
-}
-
+// generating the random number for the dice
 const genRandomNum = () => {
   diceNum = Math.floor(Math.random() * 6) + 1
-  console.log('The random number was: ', diceNum)
-
-  // displayDiceEl.textContent = diceNum
   diceImageEl.src = `/IMGs/Dice Images/Face${diceNum}.png`
 }
 
-const calPos = () => {
+// update the current and older positions of the piece
+const updatePos = () => {
   turn.oldPos = turn.position
-  console.log(turn.piece, turn.oldPos)
   turn.position = turn.position + diceNum
-  console.log(`${turn.piece} Current Position`, turn.position)
 }
 
-const isPlayerAtGate = () => {
-  gldGatesEnt.forEach((entrance, index) => {
+// checks of the player landed on a ladder position and update the player position if landed
+const isPlayerAtLadder = () => {
+  ladderEnts.forEach((entrance, index) => {
     if (turn.position == entrance) {
-      turn.position = gldGatesExit[index]
-      console.log(
-        `${turn.piece} position is ${turn.position} and exit value is ${gldGatesExit[index]}`
-      )
+      turn.position = ladderExits[index]
     }
   })
 }
 
-const isPlayerAtBlackHole = () => {
-  blkHolesEnt.forEach((trap, index) => {
+// checks of the player landed on a snake position and update the player position if landed
+const isPlayerAtSnake = () => {
+  snakeEnts.forEach((trap, index) => {
     if (turn.position == trap) {
-      turn.position = blkHolesExit[index]
-      console.log(
-        `${turn.piece} position is ${turn.position} and trap value is ${blkHolesExit[index]}`
-      )
+      turn.position = snakeExits[index]
     }
   })
 }
 
+// moving and updating the piece location on the board depending on the current and older positions 
 const movePiece = () => {
+
   boardCellEls.forEach((cell) => {
     if (cell.id == turn.oldPos) {
       if (cell.textContent.includes(turn.piece)) {
@@ -137,55 +148,60 @@ const movePiece = () => {
       }
     }
 
-    isPlayerAtGate()
-    isPlayerAtBlackHole()
+    isPlayerAtLadder()
+    isPlayerAtSnake()
 
     if (cell.id == turn.position) {
       cell.textContent += turn.piece
     }
   })
+
 }
 
+// switches the platyer turn if the dice number was not 6
 const switchTurn = () => {
   if (diceNum === 6) {
     return
   } else {
     playerIndex = (playerIndex + 1) % players.length
-    console.log(playerIndex)
-
     turn = players[playerIndex]
-    console.log(turn)
   }
 }
 
+// check if there is a winner who reached last cell
 const checkWinner = () => {
   if (turn.position === 100) {
     isWinner = true
     winner = turn.piece
   }
-
   return
 }
 
+// a function to call all the required functions if there is no winner and handle user click on the button for rolling the dice and play 
 const handlePlayClick = () => {
   if (isWinner === true) {
     return
   } else {
     genRandomNum()
     if (turn.position + diceNum <= 100) {
-      calPos()
+      updatePos()
       movePiece()
       checkWinner()
     }
+    updateCurrentPositionsScreen()
+    hidePiece()
     switchTurn()
-    updateMsg()
+    updateMsg()   
   }
 }
 /*----------------------------- Event Listeners -----------------------------*/
-diceButtonEl.addEventListener('click', (event) => {
+
+// handle user click on the button to roll the dice
+diceButtonEl.addEventListener('click', () => {
   handlePlayClick()
 })
 
-rstBtnEl.addEventListener('click', (event) => {
+// handle user click to restart the game
+rstBtnEl.addEventListener('click', () => {
   initializeGame()
 })
