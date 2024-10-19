@@ -1,0 +1,37 @@
+
+1. Initialize the game with a message and empty board.
+
+2.  Update the message on HTML
+	// IF the player won,
+		// Then generate a message to congrats the winner
+	// ELSE IF the player has got swolen up by the black hole,
+		// Then generate a message says "The Black Hole Swallowed you and moved you down!!, Better luck Next time(Player)" and displays whose current turn is 
+	// ELSE IF the player got in a golden gate,
+		// Then generate a message says "The golden gate moved you up!!, What kind of luck do you have!! (player)", and displays whose current turn is
+	// ELSE, Then generate a message displays whose current turn.
+
+3.	Generate a random number from 1 to 6 for the dice.
+		//IF the random number was 6, 
+			//then the player move his piece once and gets another chance. 
+		//ELSE, the player move his piece 
+		
+4.	Move the piece of the player in the current turn.
+		//IF the player won "reached the last cell (100)"
+			//Then set winner to true, and update the message
+		//ELSE IF the piece got placed on the entrance of the Black Hole.
+			//Then the player piece get's moved down to the hole's exit and update the board.
+		//ELSE IF the piece got placed on the entrance of the golden gate,
+			//Then the player gets moved up to the gate's exit and update the baord.
+		//ELSE, Then the player still remains in his place after being moved and switches turns.
+		
+5. Switch player turn
+	// IF the turn was for player 1,
+		// Then switch the turn to player 2,
+	// ELSE IF the turn was for player 2,
+		// Then switch the turn for player 1,
+		
+		
+Event Listeners:-
+
+1. listen for a click of a button to roll the dice.
+2. listen for a click of a button to play again after the game fininshed.
